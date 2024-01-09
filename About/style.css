@@ -1,517 +1,228 @@
---------------   Css Start From here --------------
 
 
-
-
-
-
-
-
-
-*{
-
-
-
-        padding: 0;
-
-
-
-        margin: 0;
-
-
-
-        box-sizing: border-box;
-
-
-
+body {
+	margin-top: 0px;
+	font-size: 14px;
+	font-family: "Helvetica Nueue",Arial,Verdana,sans-serif;
+	background-image:url(https://i.postimg.cc/FKJbP12Z/rm21-texture-jite-47.jpg);
+}
+.btn:hover,
+.btn:focus,
+.btn:active{
+    outline: 0 !important;
+}
+/* entire container, keeps perspective */
+.card-container {
+	  -webkit-perspective: 800px;
+   -moz-perspective: 800px;
+     -o-perspective: 800px;
+        perspective: 800px;
+        margin-bottom: 30px;
+}
+/* flip the pane when hovered */
+.card-container:not(.manual-flip):hover .card,
+.card-container.hover.manual-flip .card{
+	-webkit-transform: rotateY( 180deg );
+-moz-transform: rotateY( 180deg );
+ -o-transform: rotateY( 180deg );
+    transform: rotateY( 180deg );
 }
 
 
-
-@font-face {
-
-
-
-        font-family: pop;
-
-
-
-        src: url(./fonts/Poppins-Medium.ttf);
-
-
-
+.card-container.static:hover .card,
+.card-container.static.hover .card {
+	-webkit-transform: none;
+-moz-transform: none;
+ -o-transform: none;
+    transform: none;
+}
+/* flip speed goes here */
+.card {
+	 -webkit-transition: -webkit-transform .5s;
+   -moz-transition: -moz-transform .5s;
+     -o-transition: -o-transform .5s;
+        transition: transform .5s;
+-webkit-transform-style: preserve-3d;
+   -moz-transform-style: preserve-3d;
+     -o-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+	position: relative;
 }
 
-
-
-body{
-
-
-
-        background-color: rgb(238, 238, 238);
-
-
-
+/* hide back of pane during swap */
+.front, .back {
+	-webkit-backface-visibility: hidden;
+   -moz-backface-visibility: hidden;
+     -o-backface-visibility: hidden;
+        backface-visibility: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: #FFF;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.14);
 }
 
-
-
-.main{
-
-
-
-        width: 50%;
-
-
-
-        height: auto;
-
-
-
-        display: flex;
-
-
-
-        flex-direction: column;
-
-
-
-        align-items: center;
-
-
-
-        justify-content: center;
-
-
-
-        font-family: pop;
-
-
-
-        padding: 50px;
-
-
-
+/* front pane, placed above back */
+.front {
+	z-index: 2;
 }
 
-
-
-.main .heading{
-
-
-
-        font-size: 25px;
-
-
-
-        margin-bottom: 80px;
-
-
-
-        position: relative;
-
-
-
+/* back, initially hidden pane */
+.back {
+		-webkit-transform: rotateY( 180deg );
+   -moz-transform: rotateY( 180deg );
+     -o-transform: rotateY( 180deg );
+        transform: rotateY( 180deg );
+        z-index: 3;
 }
 
+.back .btn-simple{
+    position: absolute;
+    left: 0;
+    bottom: 4px;
+}
+/*        Style       */
 
 
-.heading span{
-
-
-
-        color: rgb(0, 81, 255);
-
-
+.card{
+    background: none repeat scroll 0 0 black;
+    border-radius: 4px;
+    color: grey;
+}
+.card-container, .front, .back {
+	width: 310px;
+  height: 460px;
+  background-color: ghostwhite;
+  text-align: center;
+  border-radius: 5px;
+  margin-top: 20px;
+  box-shadow: 10px;
 
 }
-
-
-
-.heading::after{
-
-
-
-        content: " ";
-
-
-
-        position: absolute;
-
-
-
-        width: 60%;
-
-
-
-        height: 3px;
-
-
-
-        left: 50%;
-
-
-
-        transform: translateX(-50%);
-
-
-
-        bottom: -5px;
-
-
-
-        background-color: rgb(0, 81, 255);
-
-
-
+.card .cover{
+    height: 110px;
+    overflow: hidden;
+    border-radius: 4px 4px 0 0;
+}
+.card .cover img{
+	display: block;
+    width: 100%;
+    margin-top: 0px;
+}
+.card .user{
+    border-radius: 50%;
+    display: block;
+    height: 130px;
+    margin: -55px auto 0;
+    overflow: hidden;
+    width: 130px;
+}
+.card .user img{
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 4px solid #FFFFFF;
+    width: 100%;
 }
 
-
-
-.container{
-
-
-
-        width: 100%;
-
-
-
-        height: auto;
-
-
-
-        display: flex;
-
-
-
-        justify-content: center;
-
-
-
-        align-items: center;
-
-
-
-        flex-wrap: wrap;
-
-
-
+.card .content{
+    background-color: rgba(0, 0, 0, 0);
+    box-shadow: none;
+    padding: 10px 20px 20px;
+}
+.card .content .main {
+    min-height: 160px;
+}
+.card .back .content .main {
+    height: 215px;
+}
+.card .name {
+    font-size: 22px;
+    line-height: 28px;
+    margin: 22px 0 0;
+    text-align: center;
+    text-transform: capitalize;
+}
+.card h5{
+    margin: 5px 0;
+    font-weight: 400;
+    line-height: 20px;
+}
+.card .profession{
+    color: #999999;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.card .footer {
+    border-top: 1px solid #EEEEEE;
+    color: #999999;
+    margin: 30px 0 0;
+    padding: 10px 0 0;
+    text-align: center;
+}
+.card .footer .social-links{
+    font-size: 18px;
+}
+.card .footer .social-links a{
+    margin: 0 7px;
+}
+.card .footer .btn-simple{
+    margin-top: -6px;
+}
+.card .header {
+    padding: 15px 20px;
+    height: 90px;
+}
+.card .motto{
+    border-bottom: 1px solid #EEEEEE;
+    color: #999999;
+    font-size: 14px;
+    font-weight: 400;
+    padding-bottom: 10px;
+    text-align: center;
 }
 
-
-
-.container .card{
-
-
-
-        width: 230px;
-
-
-
-        height: 350px;
-
-
-
-        position: relative;
-
-
-
-        border-radius: 10px;
-
-
-
-        background-color: #ff;
-
-
-
-        overflow: hidden;
-
-
-
-        box-shadow: 0px 0px 22px rgba(0, 0, 0, 0.37);
-
-
-
-        margin:15px;
-
-
-
+.card .stats-container{
+	width: 100%;
+	margin-top: 50px;
+}
+.card .stats{
+	display: block;
+	float: left;
+	width: 33.333333%;
+	text-align: center;
 }
 
-
-
-.card::after{
-
-
-
-        content: " ";
-
-
-
-        width: 100%;
-
-
-
-        height: 40%;
-
-
-
-        position: absolute;
-
-
-
-        top: 0;
-
-
-
-        left: 0;
-
-
-
-        background-image: url(https://i.postimg.cc/FK4hb2M9/Picsart-24-01-06-18-21-54-024.jpg);
-
-        background-size: 250px;
-
-
-
+.card .stats:first-child{
+	border-right: 1px solid #EEEEEE;
+}
+.card .stats:last-child{
+	border-left: 1px solid #EEEEEE;
+}
+.card .stats h4{
+	font-weight: 300;
+	margin-bottom: 5px;
+}
+.card .stats p{
+	color: #777777;
 }
 
-
-
-.card img{
-
-
-
-        width: 100%;
-
-
-
-        height: 100%;
-
-
-
-        position: absolute;
-
-
-
-        top: 0;
-
-
-
-        left: 0;
-
-
-
-        object-fit: fit;
-
-
-
-        transition: .6s;
-
-
-
-        box-shadow: 0px 0px 22px rgba(0, 0, 0, 0.37);
-
-
-
-        z-index: 99;
-
-
-
-}
-
-
-
-.card:hover img{
-
-
-
-        transform: scale(.50) translateY(-120px);
-
-
-
-        border-radius: 10px;
-
-
-
-}
-
-
-
-.card .details{
-
-
-
-        width: 100%;
-
-
-
-        height: 100%;
-
-
-
-        position: absolute;
-
-
-
-        display: flex;
-
-
-
-        flex-direction: column;
-
-
-
-        justify-content: flex-end;
-
-
-
-        align-items: center;
-
-
-
-        padding-bottom: 40px;
-
-
-
-        transform: translateY(100%);
-
-
-
-        transition: .6s;
-
-
-
-}
-
-
-
-.card:hover .details{
-
-
-
-        transform: translateY(0);
-
-
-
-}
-
-
-
-.details h3{
-
-
-
-        font-size: 15px;
-
-
-
-        color: rgb(0, 81, 255);
-
-
-
-}
-
-
-
-.details p{
-
-
-
-        font-size: px;
-
-
-
-        color: dimgrey;
-
-
-
-        margin-bottom: 10px;
-
-
-
-}
-
-
-
-.details .social-links{
-
-
-
-        display: flex;
-
-
-
-}
-
-
-
-.details .social-links a{
-
-
-
-        width: 30px;
-
-
-
-        height: 30px;
-
-
-
-        margin: 0 5px;
-
-
-
-        border-radius: 50%;
-
-
-
-        color: #333;
-
-
-
-        background-color: rgb(182, 182, 182);
-
-
-
-        text-decoration: none;
-
-
-
-        transition: .6s;
-
-
-
-        display: grid;
-
-
-
-        place-items: center;
-
-
-
-        font-size: 17px;
-
-
-
-}
-
-
-
-.details .social-links a:hover{
-
-
-
-        transform: rotate(360deg);
-
-
-
-        background-color: rgb(0, 81, 255);
-
-
-
-        color: #fff;
-
-
-
+/*       Fix bug for IE      */
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    .front, .back{
+        -ms-backface-visibility: visible;
+        backface-visibility: visible;
+    }
+
+    .back {
+        visibility: hidden;
+        -ms-transition: all 0.2s cubic-bezier(.92,.01,.83,.67);
+    }
+    .front{
+        z-index: 4;
+    }
+    .card-container:not(.manual-flip):hover .back,
+    .card-container.manual-flip.hover .back{
+        z-index: 5;
+        visibility: visible;
+    }
 }
