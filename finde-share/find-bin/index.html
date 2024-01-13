@@ -1,1 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>finde bin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap" rel="stylesheet">
+<style>
+	
+body {
+           background-image:url(https://i.postimg.cc/FKJbP12Z/rm21-texture-jite-47.jpg);
+           color: white;
+           font-family: Arial, sans-serif;
+           padding: 20px;
+       }
+    
+      .bin-list {
+           margin-top: 5px;
+       }
+       
+              .bin {
+           margin-bottom: 20px;
+           border: 1px solid #ccc;
+           padding: 10px;
+           background-color: #333;
+           border-radius: 5px;
+       }
+       
+              
+       .bin p {
+           margin: 5px 0;
+       }
 
+       .bin p strong {
+           font-weight: bold;
+           color: #ffcc00;
+       }
+
+       .bin p strong:first-child {
+           color: yellow;
+       }
+
+       .bin p strong:not(:first-child) {
+           color: red;
+       }
+       
+    
+	
+	</style>
+
+
+</head>
+<body>
+<div class="container-fluid">
+	<center>
+	     <h2 class="t3x"> <font color="white" style="text-shadow: 0 0 20px blue, 0 0 5px red, 0 0 7px red, 0 0 45px red; font-weight:bold: red;font-size:40px"> SEARCH BIN   </font> 
+
+
+</h2> 
+<div class="container">
+<div class="search">
+
+<input type="text" name="" id="find" placeholder="search here...." onkeyup="search()">
+</div>
+<h2>All bins</h2>
+<font color="red" size="4">__________________________________________________</font> 
+</center>
+<br>
+
+<div class="bin-list">
+<div class="bin">
+<p><strong>Name:</strong>
+<span style="display: inline-block;">
+<span class="shadow-effect" style="color: red;">MR-NAYIM-404</span> </span>
+</p>
+<h4><p><strong>Subject:</strong> ALI Express </p> </h4>
+<p><strong>Bin:</strong> 421747002783xx</p>
+<p><strong>Date:</strong> 05/2027</p>
+<p><strong>Country:</strong> 𝗖𝗩𝗩 : 000/999/111/𝗥𝗡𝗗 <> 𝗜𝗣 : 𝗢𝗪𝗡</p>
+<p><strong>Massage :</strong> 𝗛𝗶𝘁 𝘄𝗶𝘁𝗵 1$ 𝗮𝗻𝗱 𝗰𝗼𝗻𝘁𝗶𝗻𝘂𝗲 𝘄𝗶𝘁𝗵 3$. 𝗣𝗮𝘆 𝗗𝗶𝗿𝗲𝗰𝘁𝗹𝘆 𝗳𝗿𝗼𝗺 𝗪𝗲𝗯𝘀𝗶𝘁𝗲.
+</p>
+<p><strong>Status:</strong> &#9989;</p>
+<p><strong>Created At:</strong> 2024-01-07 07:39:14</p>
+</div>
+
+
+</div>
+</div>
+</div>
+<!-- javascript -->
+<script type="text/javascript">
+function search() {
+let filter = document.getElementById('find').value.toUpperCase();
+let item = document.querySelectorAll('.bin');
+let l = document.getElementsByTagName('h4');
+for(var i = 0;i<=l.length;i++){
+let a=item[i].getElementsByTagName('h4')[0];
+let value=a.innerHTML || a.innerText || a.textContent;
+if(value.toUpperCase().indexOf(filter) > -1) {
+item[i].style.display="";
+}
+else
+{
+item[i].style.display="none";
+}
+}
+}
+</script>
+</body>
+</html>
